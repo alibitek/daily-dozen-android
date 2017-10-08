@@ -2,14 +2,14 @@ buildscript {
     repositories {
         mavenCentral()
 
-        if (!getGradle().getStartParameter().getTaskRequests().toString().contains("Fdroid")) {
+        if (!isPlayStoreBuild) {
             println "Enabling Google Play specific build repositories"
             maven { url 'https://maven.fabric.io/public' }
         }
     }
 
     dependencies {
-        if (!getGradle().getStartParameter().getTaskRequests().toString().contains("Fdroid")) {
+        if (!isPlayStoreBuild) {
             println "Enabling Google Play specific build tool dependencies"
             classpath 'io.fabric.tools:gradle:1.21.6'
         }
@@ -19,7 +19,7 @@ buildscript {
 
 apply plugin: 'com.android.application'
 
-if (!getGradle().getStartParameter().getTaskRequests().toString().contains("Fdroid")) {
+if (!isPlayStoreBuild) {
     println "Enabling Google Play specific plugins"
     apply plugin: 'io.fabric'
 }
@@ -30,7 +30,7 @@ repositories {
     mavenCentral()
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
-    if (!getGradle().getStartParameter().getTaskRequests().toString().contains("Fdroid")) {
+    if (!isPlayStoreBuild) {
         maven { url 'https://maven.fabric.io/public' }
     }
 
@@ -50,8 +50,8 @@ android {
         applicationId "org.nutritionfacts.dailydozen"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 44
-        versionName "15.4"
+        versionCode 45
+        versionName "15.5"
     }
     buildTypes {
         release {

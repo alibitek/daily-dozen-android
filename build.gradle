@@ -25,5 +25,6 @@ task clean(type: Delete) {
 }
 
 project.ext {
-    isPlayStoreBuild = !getGradle().getStartParameter().getTaskRequests().toString().contains("Fdroid")
+    def taskRequestsStr = getGradle().getStartParameter().getTaskRequests().toString()
+    isPlayStoreBuild = !taskRequestsStr.contains("Fdroid") || !taskRequestsStr.contains("clean")
 }
