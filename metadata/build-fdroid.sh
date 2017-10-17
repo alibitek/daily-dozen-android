@@ -30,7 +30,7 @@ echo "Cleaning up metadata file"
 fdroid rewritemeta "$appid"
 
 echo "Filling automated fields in metadata file (e.g. Auto Name and Current Version)"
-fdroid checkupdates "$appid"
+fdroid checkupdates --auto "$appid"
 
 echo "Making sure that fdroid lint doesn't report any warnings. If it does, fix them."
 fdroid lint "$appid"
