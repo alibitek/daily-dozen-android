@@ -34,8 +34,8 @@ android {
         applicationId "org.nutritionfacts.dailydozen"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 39
-        versionName "14"
+        versionCode 50
+        versionName "17"
     }
     buildTypes {
         release {
@@ -51,6 +51,7 @@ android {
         }
         fdroid {
             dimension "store"
+            versionNameSuffix "-fdroid"
         }
     }
 }
